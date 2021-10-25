@@ -12,13 +12,13 @@
 <body>
     @foreach ($posts as $post)
     <article>
-        <a href="/posts/<?= $post->slug ?>">
+        <a href="/posts/{{ $post->slug }}">
             <h1>
-                <?= $post->title ?>
+                {{ $post->title }}
             </h1>
         </a>
         <div>
-            <?= $post->body ?>
+            {!! $post->body !!}
         </div>
     </article>
     @endforeach
