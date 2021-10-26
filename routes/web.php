@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\Post;
+use App\Models\Posts;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,11 +15,11 @@ use App\Models\Post;
  */
 
 Route::get('/', function () {
-    $posts = Post::all();
+    $posts = Posts::all();
     return view('posts', ['posts' => $posts]);
 });
 
-Route::get('posts/{post}', function ($slug) {
-    $post = Post::findOrFail($slug);
+Route::get('posts/{post}', function ($id) {
+    $post = Posts::findOrFail($id);
     return view('post', ['post' => $post]);
 });
