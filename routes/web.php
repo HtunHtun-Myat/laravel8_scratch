@@ -3,6 +3,7 @@
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Models\Posts;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +17,7 @@ use App\Models\Posts;
  */
 
 Route::get('/', function () {
-    $posts = Posts::all();
-    return view('posts', ['posts' => $posts]);
+    return view('posts', ['posts' => Posts::latest('created_at')->with(['category', 'author'])->get()]);
 });
 
 Route::get('posts/{posts:slug}', function (Posts $posts) {
@@ -26,4 +26,8 @@ Route::get('posts/{posts:slug}', function (Posts $posts) {
 
 Route::get('/categories/{category:slug}', function (Category $category) {
     return view('posts', ['posts' => $category->post]);
+});
+
+Route::get('/authors/{author:user_name}', function (User $author) {
+    return view('posts', ['posts' => $author->post]);
 });
