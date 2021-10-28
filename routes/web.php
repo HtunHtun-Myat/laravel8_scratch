@@ -17,7 +17,7 @@ use App\Models\User;
  */
 
 Route::get('/', function () {
-    return view('posts', ['posts' => Posts::latest('created_at')->with(['category', 'author'])->get()]);
+    return view('posts', ['posts' => Posts::latest('created_at')->get()]);
 });
 
 Route::get('posts/{posts:slug}', function (Posts $posts) {
