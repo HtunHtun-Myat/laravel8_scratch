@@ -1,9 +1,9 @@
 <?php
 
 use App\Models\Category;
-use Illuminate\Support\Facades\Route;
 use App\Models\Posts;
 use App\Models\User;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,24 +17,24 @@ use App\Models\User;
  */
 
 Route::get('/', function () {
-    return view('posts', 
-    ['posts' => Posts::latest('created_at')->get(),
-     'categories' => Category::all()]);
-});
+    return view('posts',
+        ['posts' => Posts::latest('created_at')->get(),
+            'categories' => Category::all()]);
+})->name('home');
 
 Route::get('posts/{posts:slug}', function (Posts $posts) {
     return view('post', ['posts' => $posts]);
 });
 
 Route::get('/categories/{category:slug}', function (Category $category) {
-    return view('posts', 
-    ['posts' => $category->post,
-    'currentCategory' => $category,
-     'categories' => Category::all()]);
+    return view('posts',
+        ['posts' => $category->post,
+            'currentCategory' => $category,
+            'categories' => Category::all()]);
 });
 
 Route::get('/authors/{author:user_name}', function (User $author) {
-    return view('posts', 
-    ['posts' => $author->post,
-    'categories' => Category::all()]);
+    return view('posts',
+        ['posts' => $author->post,
+            'categories' => Category::all()]);
 });
