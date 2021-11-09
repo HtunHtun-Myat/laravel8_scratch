@@ -18,8 +18,8 @@
 
                 @foreach ($categories as $category)
 
-                <x-dropdown-item href="/categories/{{ $category->slug }}"
-                    :active="isset($currentCategory) && $currentCategory->is($category)">
+                <x-dropdown-item href="/?category={{ $category->slug }}"
+                    :active='request()->is("categories/{$category->slug}")'>
                     {{ ucwords($category->name) }}
                 </x-dropdown-item>
 
@@ -27,7 +27,7 @@
 
             </x-dropdown>
 
-            <x-icon name='down-arrow' class="absolute pointer-events-none" style="right: 12px;" />
+            <x-icon name=' down-arrow' class="absolute pointer-events-none" style="right: 12px;" />
         </div>
 
         <!-- Other Filters -->
