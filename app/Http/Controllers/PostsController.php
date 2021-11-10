@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Category;
 use App\Models\Posts;
 
 class PostsController extends Controller
@@ -11,7 +9,7 @@ class PostsController extends Controller
     public function index()
     { 
         return view('posts.index',
-            ['posts' => Posts::latest()->filter(request(['search', 'category', 'author']))->get()]);
+            ['posts' => Posts::latest()->filter(request(['search', 'category', 'authors']))->get()]);
     }
 
     public function show(Posts $posts)
