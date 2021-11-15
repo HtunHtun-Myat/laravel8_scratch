@@ -35,7 +35,7 @@
                         <h5 class="font-bold">
                             <a href="/?authors={{ $post->author->user_name }}">{{ $post->author->name }} </a>
                         </h5>
-                        <h6>{{ $post->title }}</h6>
+                        {{-- <h6>{{ $post->title }}</h6> --}}
                     </div>
                 </div>
 
